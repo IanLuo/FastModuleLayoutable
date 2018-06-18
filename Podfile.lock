@@ -1,0 +1,31 @@
+PODS:
+  - Aspects (1.4.1)
+  - FastModule (0.0.1)
+  - Yoga (1.8.1)
+  - YogaKit (1.8.1):
+    - Yoga (~> 1.8.1)
+
+DEPENDENCIES:
+  - Aspects (~> 1.4.1)
+  - FastModule (from `../FastModule`)
+  - YogaKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Aspects
+    - Yoga
+    - YogaKit
+
+EXTERNAL SOURCES:
+  FastModule:
+    :path: "../FastModule"
+
+SPEC CHECKSUMS:
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  FastModule: 8889a8794a6adcf8d678769c7a551236d11d5071
+  Yoga: e6f1fed82138c17da5332e15e5770abf0e9cc386
+  YogaKit: bb90d11e297e06abef7e0cfb20e035a6bd00cdc4
+
+PODFILE CHECKSUM: 1d8c5420ce64db720c05d90ada1573d183b229a8
+
+COCOAPODS: 1.5.3
