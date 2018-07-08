@@ -4,8 +4,6 @@ import FastModule
 import YogaKit
 import Aspects
 
-private let keyLayout = "layoutable_layout"
-
 public protocol Layoutable: Module, ExternalType {
     var view: UIView { get }
     

@@ -28,7 +28,7 @@ open class DynamicLayoutableModule: DynamicModule, Layoutable {
     }
     
     open override class var identifier: String {
-        return "~layoutable"
+        return FastModule.dynamicNameLayoutableModule
     }
     
     public required init(request: Request) {
