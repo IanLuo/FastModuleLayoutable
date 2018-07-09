@@ -10,6 +10,8 @@ import Foundation
 import FastModule
 import YogaKit
 
+public let dynamicNameLayoutableModule = "~layoutable"
+
 open class DynamicLayoutableModule: DynamicModule, Layoutable {
     public var view: UIView = UIView()
     
@@ -28,7 +30,7 @@ open class DynamicLayoutableModule: DynamicModule, Layoutable {
     }
     
     open override class var identifier: String {
-        return FastModule.dynamicNameLayoutableModule
+        return dynamicNameLayoutableModule
     }
     
     public required init(request: Request) {
@@ -38,8 +40,8 @@ open class DynamicLayoutableModule: DynamicModule, Layoutable {
     private let layoutComponents = DynamicLayoutModuleComponentSubLayouts()
     
     open override func binding() {
-        bindAction(pattern: "bind-the-injected-bindings") { [weak self] (parameter, responder, request) in
-            if let generatorAction = parameter.value("generatorAction", type: ((Layoutable, DynamicLayoutModuleComponentSubLayouts) -> Void).self) {
+        bindAction(pattern: FastModule.keyActionBindInjectedBindings) { [weak self] (parameter, responder, request) in
+            if let generatorAction = parameter.value(keyParameterActionBindInjectedBindingsGeneralActions, type: ((Layoutable, DynamicLayoutModuleComponentSubLayouts) -> Void).self) {
                 guard let strongSelf = self else { return }
                 generatorAction(strongSelf, strongSelf.layoutComponents)
                 strongSelf.layoutComponents.injectSubLayoutables(layoutable: strongSelf)
@@ -89,12 +91,13 @@ private struct DynamicLayoutableModuleDescriptor: DynamicModuleDescriptorProtoco
     private let component = DynamicLayoutModuleComponentSubLayouts()
     
     public func instance(request: Request) -> Layoutable {
+        ModuleContext.register(identifier: request.module, type: DynamicLayoutableModule.self)
         return ModuleContext.request(self.request(request: request)) as! Layoutable
     }
     
     public func request(request: Request) -> Request {
         var request = request
-        request["generatorAction"] = generatorAction
+        request[FastModule.keyParameterActionBindInjectedBindingsGeneralActions] = generatorAction
         return request
     }
 }

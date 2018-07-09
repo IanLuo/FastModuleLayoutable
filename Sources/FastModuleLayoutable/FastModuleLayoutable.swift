@@ -107,7 +107,7 @@ extension ExternalType where Self: Layoutable {
         bindAction(pattern: "guesture-tap/:enabled") { [weak self] (parameter, responder, request) in
             let enabled = parameter.truthy(":enabled")
             
-            /// 当 enabled tap 的时候, 确保用户可交互
+            // 当 enabled tap 的时候, 确保用户可交互
             if enabled {
                 self?.view.isUserInteractionEnabled = enabled
                 self?.enableTapGuestureObservation()

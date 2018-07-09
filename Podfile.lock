@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FastModule:
-    :commit: b46ed9cf24d218a8804f3f864b0fac6c893b55fe
+    :commit: 5d745f8a40e83c3344e07a9b5906177b9f7ba925
     :git: "git@github.com:IanLuo/FastModule.git"
 
 SPEC CHECKSUMS:
