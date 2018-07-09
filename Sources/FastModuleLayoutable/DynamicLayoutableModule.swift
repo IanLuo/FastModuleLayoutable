@@ -91,11 +91,11 @@ private struct DynamicLayoutableModuleDescriptor: DynamicModuleDescriptorProtoco
     private let component = DynamicLayoutModuleComponentSubLayouts()
     
     public func instance(request: Request) -> Layoutable {
-        ModuleContext.register(identifier: request.module, type: DynamicLayoutableModule.self)
         return ModuleContext.request(self.request(request: request)) as! Layoutable
     }
     
     public func request(request: Request) -> Request {
+        ModuleContext.register(identifier: request.module, type: DynamicLayoutableModule.self)
         var request = request
         request[FastModule.keyParameterActionBindInjectedBindingsGeneralActions] = generatorAction
         return request
